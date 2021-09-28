@@ -1,0 +1,309 @@
+/* fonts */
+
+/* con fontface podemos incluir fuentes personalizadas que tengamos en nuestra máquina */
+@font-face {
+    /* el font-family es como un alias, puede llamarse como queramos */
+    font-family: "STARWARS";
+    /* los src linkean a donde tengan la fuente... traten de tenerla en la carpeta de assets así sube y mantiene la ruta relativa */
+    src:
+        url("./assets/STARWARS/STARWARS.eot") format("eot"),
+        url("./assets/STARWARS/STARWARS.woff") format("woff"),
+        url("./assets/STARWARS/STARWARS.ttf") format("truetype"),
+        url("./assets/STARWARS/STARWARS.svg#STARWARS") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
+/* colors */
+:root {
+    --main-dark-color: #252422;
+    --main-dark-grey: #403d39;
+    --main-medium-grey: #ccc5b9;
+    --main-light-grey: #fffcf2;
+    --main-orange: #eb5e28;
+    --main-orange-shade: #a34018;
+}
+
+/* resets */
+* {
+    margin: 0;
+    padding: 1%;
+}
+
+body {
+    background-color: var(--main-dark-color);
+    color: var(--main-medium-grey);
+}
+
+h1 {
+    font-family: 'STARWARS', sans-serif;
+    font-size: 1.7em;
+}
+
+p,
+li,
+button {
+    font-family: 'Exo 2', sans-serif;
+}
+
+/* header/navbar */
+header {
+    display: flex;
+    align-content: space-between;
+    background-color: var(--main-dark-grey);
+    padding: 8%;
+    margin: -2%;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--main-light-grey);
+    font-size: 1.7em;
+}
+
+.menu {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: var(--main-dark-grey);
+    min-width: 160px;
+    padding: 12px 16px;
+    z-index: 5;
+    top: 35px;
+    /* para que la hamburguesa quede a la derecha */
+    right: -30px;
+}
+
+.menu:hover .dropdown {
+    display: block;
+}
+
+.dropdown li {
+    list-style: none;
+}
+
+/* nav oculta */
+.inlineList {
+    display: none;
+}
+
+/* cuerpo */
+.description {
+    margin-top: 5%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    text-align: center;
+    margin: auto;
+}
+
+main img {
+    height: 150px;
+}
+
+/* product */
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10% 0;
+    border: 2px solid var(--main-dark-grey);
+    padding: 3%;
+    box-shadow: 4px 4px 6px 1px var(--main-dark-grey);
+}
+
+.imgContainer,
+.newArrivalContainer {
+    position: relative;
+}
+
+.newArrivalContainer {
+    z-index: 10;
+}
+
+.newArrivalContainer .sticker {
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    background: url('./assets/sticker.png') no-repeat;
+    background-size: 75px;
+    filter: hue-rotate(205deg);
+    top: -35px;
+    right: -160px;
+    animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+.newArrivalContainer .msg {
+    color: var(--main-light-grey);
+    text-align: center;
+    font-family: 'Exo 2';
+    font-size: 1.5em;
+    width: 75px;
+    position: absolute;
+    margin: -14px 0 0 93px
+}
+
+.imgContainer .heart {
+    position: absolute;
+    top: 6%;
+    right: 9%;
+    font-size: 1.5em;
+}
+
+.product button,
+.product button:visited {
+    margin: 5% 0;
+    width: 90%;
+    background-color: var(--main-orange);
+    border-radius: 15px;
+    border: 2px solid var(--main-dark-grey);
+    cursor: pointer;
+    padding: 4% 15%;
+    font-size: 1em;
+    font-weight: 800;
+}
+
+.product button {
+    animation: outColorHover 1s ease forwards 1;
+}
+
+.product button:hover {
+    animation: inColorHover 1s ease forwards 1;
+}
+
+@keyframes inColorHover {
+    from {
+        background-color:  var(--main-orange);
+    }
+    to {
+        background-color: var(--main-orange-shade);
+    }
+}
+
+@keyframes outColorHover {
+    from {
+        background-color: var(--main-orange-shade);
+    }
+    to {
+        background-color:  var(--main-orange);
+    }
+}
+
+.product button a,
+.product button a:visited {
+    text-decoration: none;
+    color: var(--main-light-grey);
+}
+
+/* carousel */
+.carousel img {
+    margin: auto;
+}
+
+/* alert */
+.alert {
+    background-color: rgb(241, 96, 0);
+}
+
+/* mediaqueries van al finallllll */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    i {
+        font-size: 2em;
+    }
+
+    p,
+    li {
+        font-size: 1.5em;
+    }
+
+    .product button {
+        padding: 3% 14%;
+        font-size: 2em;
+    }
+
+    main img {
+        height: 300px;
+    }
+
+    main img:hover {
+        height: 320px;
+    }
+}
+
+@media (min-width: 1024px) {
+    main {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .product {
+        width: 40%;
+        margin: 4% 0;
+    }
+
+    main img {
+        height: 200px;
+    }
+
+    main img:hover {
+        height: 220px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .inlineList {
+        margin-top: 4%;
+        display: block;
+        text-align: center;
+    }
+
+    .inlineList li {
+        display: inline;
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width: 1480px) {
+    h1 {
+        font-size: 5em;
+    }
+
+    .inlineList li {
+        font-size: 2.5em;
+    }
+
+    .product {
+        width: 25%;
+    }
+}
+
+@media (min-width: 1600px) {
+    .product {
+        width: 18%;
+    }
+}
